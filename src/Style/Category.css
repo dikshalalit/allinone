@@ -1,0 +1,294 @@
+.addpage {
+    margin: 10px 30px 10px 0px;
+}
+
+.addcathead {
+    font-weight: 600;
+    font-size: 20px;
+}
+.addcathead2 {
+    font-weight: 600;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.path {
+    color: rgb(152, 150, 150);
+    font-weight: 400;
+    padding-left: 35px;
+    font-size: 17px;
+    padding-top: 5px;
+    font-weight: 400;
+}
+
+.path span {
+    color: rgb(0, 149, 255);
+}
+
+.inputbox {
+    background-color: #fff;
+    width: 100%;
+    height: 550px;
+    margin-top: 15px;
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+.inputbox2{
+    background-color: #fff;
+    width:100%;
+    height: 550px;
+    margin-top:15px;
+    border-radius: 20px;
+}
+.serviceinputbox{
+    position: relative;
+    background-color: #fff;
+    width:100%;
+    height: 550px;
+    margin-top:15px;
+    border-radius: 20px;
+    overflow-x: scroll;
+}
+
+.Cname,
+.Cimage {
+    display: block;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.Cinput {
+    width: 50%;
+    padding:10px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin: 10px 0px 30px 0;
+}
+
+.savebtn {
+    display: block;
+    background-color: #0EC01B;
+    color: #fff;
+    border: none;
+    padding: 10px 70px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+.savebtn2 {
+    display: block;
+    background-color: #0EC01B;
+    color: #fff;
+    border: none;
+    padding: 10px 120px;
+    font-size: 20px;
+    border-radius: 5px;
+
+}
+.listtable {
+    width: 100%;    
+}
+.servicelisttable{
+    width:150%;
+    table-layout:fixed;
+
+}
+
+.listtable tr:nth-child(odd) {
+    background-color: rgb(228, 228, 228); 
+}
+.servicelisttable tr:nth-child(odd) {
+    background-color: rgb(228, 228, 228); 
+}
+.rowone{
+    font-weight: 500;
+}
+.b1{
+    border-radius:20px 0px 0 0;
+    width:70px;
+}
+.b2{
+    border-radius:0px 20px 0 0;
+    width:170px;
+}
+/* .servicepagination{
+    position:fixed;
+} */
+.listtable tr td{
+    padding:10px 15px;
+    font-size:17px;
+    text-align: center;
+}
+.servicelisttable tr td{
+    padding:10px 5px;
+    font-size:17px;
+    text-align: center;
+}
+.edit{
+    color: blue;
+    padding-right:15px;
+    font-size:20px;
+}
+.delete{
+    color: red;
+    font-size:20px;
+}
+.eye{
+    font-size:20px;
+}
+.categoryalign{
+    display: flex;
+    background-color: #f7f5f5;
+    height:auto;
+}
+.rightobject{
+    width: 100%;
+
+}
+.complete{
+    color:#0EC01B;
+    font-weight: 500;
+}
+.pending{
+    color:#FFA500;
+    font-weight: 500;
+}
+.cancelled, .Rejected{
+    color:red;
+    font-weight: 500;
+}
+.pagination{
+    display: flex;
+    justify-content: space-between;
+    background-color:#f7f5f5;
+    margin-top:30px;
+    font-size:15px;
+    height:40px;
+    width:100%;
+}
+.showing{
+    margin-left:20px;
+    padding:10px;
+}
+.prevbtn{
+    background-color: #ffffff;
+    border-radius:5px 0 0 5px;
+    font-size: 12px;
+    padding:5px 15px;
+    border: 1px solid #e4e4e4;
+    color:#666565;
+    height:40px;
+
+   
+}
+.nxtbtn{
+    background-color: #ffffff;
+    border-radius: 0 5px 5px 0;
+    font-size: 12px;
+    padding:5px 15px;
+    border: 1px solid #e4e4e4;
+    color:#666565;
+    height:40px;
+}
+.pageno{
+    background-color: #FFA500;
+    padding:0px 20px;
+    border: none;
+    color:#ffffff;
+    height:40px;
+    font-weight: 600;
+    
+}
+.right{
+    background-color: #0EC01B;
+    color: #ffffff;
+    width:24px;
+    height:24px;
+    padding-top:3px;
+    border-radius:5px;
+    cursor: pointer;
+}
+.wrong{
+    background-color:red;
+    color: #ffffff; 
+    width:24px;
+    height:24px;
+    padding-top:3px;
+    margin-left:15px;
+    border-radius:5px;
+    cursor: pointer;
+}
+.yesbtn{
+    background-color: #0EC01B;
+    border: none;
+    width:150px;
+    color: #ffffff;
+    padding:5px;
+    font-size:25px;
+    border-radius:5px;
+    margin:30px 0 50px 10px;
+}
+.Nobtn{
+    background-color: #ffffff;
+    border:1px solid #0EC01B;
+    width:150px;
+    color: #0EC01B;
+    padding:5px;
+    font-size:25px;
+    border-radius:5px;
+    margin:30px 0px 50px 100px;
+}
+.rejectyes{
+    background-color: red;
+}
+.rejectno{
+ color: red;
+ border:1px solid red;
+}
+.ques{
+    margin:50px 10px 0 10px;
+}
+.modalclose{
+    background-color: transparent;
+    border: none;
+    position: relative;
+    right:10px;
+}
+.modalclose .wrong{
+    position:absolute;
+    left:400px;
+}
+.username, .userpass{
+    display: block;
+    font-size:20px;
+    font-weight: 500;
+    padding-bottom:5px;
+}
+.inputfelx{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:20px;
+}
+.userinput{
+    width:400px;
+    height:60px;
+    border-radius:5px;
+    border: 1px solid rgb(118, 118, 118);
+}
+.incheck{
+    position: relative;
+    top:5px;
+    width:25px;
+    height:25px;
+    margin-right:10px;
+    margin-top:10px;
+}
+.subadminhead{
+    color: #FFA500;
+    margin-bottom:20px;
+}
+.adminbtn{
+    display: flex;
+    justify-content: center;
+    margin-top:40px;
+}
+

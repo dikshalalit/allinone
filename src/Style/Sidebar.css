@@ -1,0 +1,85 @@
+.screenbg {
+    height: 100vh;
+    display: flex;
+}
+
+.dashbox {
+    display: flex;
+}
+
+.sidebar {
+    background-color: #FF8B17;
+    height: 100vh;
+    width: auto;
+}
+
+
+.sidebox {
+    width: 250px;
+}
+
+.logoimg {
+    width: 50px;
+    height: auto;
+}
+
+.logoset {
+    padding: 10px 30px;
+}
+
+.logoset span {
+    position: relative;
+    top: 5px;
+    left: 15px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.dashhead {
+    font-size: 22px;
+    font-weight: 500;
+    padding-left: 20px;
+    margin: 70px 0 20px 0;
+}
+
+.subhead {
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.subhead:hover {
+    color: #fff;
+    background-color: #FFA500;
+    width: 100%;
+}
+
+.BookingList li {
+    color: #fff;
+    background-color: #FFA500;
+    list-style-type: none;
+    margin-left: -40px;
+    padding-left: 40px;
+    padding-bottom: 10px;
+}
+
+.BookingList li:hover {
+    font-weight: 500;
+}
+
+.dflex {
+    display: flex;
+}
+.BookingList a{
+    text-decoration: none;
+}
+.gripbtnside{
+    width:30px;
+    height:60px;
+    background-color: #FFA500;
+    border: none;
+    font-size:25px;
+
+}

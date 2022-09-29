@@ -1,0 +1,67 @@
+.Cselect{
+    width:50%;
+    height:50px;
+    border-radius:5px;
+}
+.Cselect option{
+    background-color:#FFA500;
+    outline: red;
+    color: #ffffff;
+    padding:50px;
+    font-size:20px;
+}
+option:hover{
+    background-color: aquamarine;
+}
+.CategoryC{
+    border: 1px solid black;
+    width:50%;
+    border-radius:5px;
+    display: flex;
+    justify-content: space-between;
+    padding:10px;
+}
+.categorylist li{
+    list-style:none;
+}
+.categorylist{
+     border:1px solid #ccc;
+     width:50%;
+     background-color: #f7f5f5;
+}
+.categorybtn{
+    display: block;
+    background-color: #0EC01B;
+    color: #fff;
+    border: none;
+    padding: 10px 70px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+.subbtn{
+    display: none;
+        background-color: #0EC01B;
+        color: #fff;
+        border: none;
+        padding: 10px 0px;
+        width:260px;
+        margin-right:60px;
+        font-size: 20px;
+        border-radius: 5px;
+        margin-top:50px;
+    }
+.selectstyle{
+    width:50%;
+    height:50px;
+    border-radius:5px;
+}
+.addbtn{
+    background-color: #0EC01B;
+    color: #fff;
+    border: none;
+    padding: 10px 0px;
+    width:200px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-top:50px;
+}

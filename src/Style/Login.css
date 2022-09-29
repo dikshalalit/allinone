@@ -1,0 +1,61 @@
+.loginbg{
+    background-color: #f7f5f5;
+    width:100%;
+    height:100vh;
+}
+.loginbox{
+    position: relative;
+    top:50px;
+    background-color:#fff;
+    width:70%;
+    height:600px;
+    margin:auto;
+    box-shadow: 0px 0px 5px #b1b1b1;
+    display: flex;
+}
+.wlcmbox{
+    background-color: #FFA500;
+    width:30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.inputLoginbox{
+    background-color: #ffffff;
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logoimglogin{
+    width:100px;
+    height: 100px;
+    margin-top:80px;
+}
+.welcometxt{
+    text-align: center;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight:700;
+    margin-top:35px;
+}
+.Linput{
+    display: block;
+    width:60%;
+    height:60px;
+    border:none;
+    border-bottom:1px solid black;
+    margin-bottom:20px;
+}
+.loginsubmit{
+    background-color: #0EC01B;
+    color: #ffffff;
+    border: none;
+    font-size:20px;
+    padding:5px 20px;
+    border-radius:5px;
+}
+.Linput:focus{
+    outline:none;
+}
