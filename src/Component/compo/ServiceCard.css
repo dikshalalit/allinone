@@ -1,0 +1,130 @@
+.ScardBox{
+    margin-top:20px;
+    border: 1px solid black;
+    width:100%;
+    height: auto;
+    padding:10px;
+}
+.SCardUpper{
+    display: flex;
+    justify-content: space-between;
+}
+.UpperText div{
+border-bottom:1px solid  rgb(107, 105, 105);
+padding-bottom:2px;
+padding-top: 20px;
+font-size:15px;
+font-weight: 500;
+color: rgb(107, 105, 105);
+display: block;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+.UpperText{
+    width:60%;
+}
+.ServiceImage{
+    height:180px;
+}
+.PlanBox{
+    height: auto;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0;
+}
+.PlanBox h6{
+    color:#ffffff;
+    padding-top:5px;
+}
+.silver{
+    background-color: #989DA0;
+}
+.PlanInput1{
+    background-color:white;
+    border-radius:2px;
+    width:80%;
+    height:30px;
+    margin-bottom:10px;
+    padding:0 5px;
+    font-size:15px;
+}
+.PlanInput2{
+    background-color:white;
+    border-radius:2px;
+    width:80%;
+    height:50px;
+    margin-bottom:10px;
+    padding:0 5px;
+    font-size:15px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.SUpdate{
+    background-color:#0EC01B;
+    color: #ffffff;
+    padding:5px 10px;
+    font-size:20px;
+    font-weight: 500;
+    border: none;
+    width:100px;
+    margin:0 30px;
+    border-radius:5px;
+}
+.SDelete{
+    background-color:red;
+    color: #ffffff;
+    padding:5px 10px;
+    font-size:20px;
+    font-weight: 500;
+    width:100px;
+    border: none;
+    margin:0 30px;
+    border-radius:5px;
+}
+.ServiceBtns{
+    display: flex;
+    justify-content:center;
+}
+.backBtn{
+    border: none;    
+}
+.despcurse{
+    cursor: pointer;
+}
+.servicetypebox{
+    width:50%;
+}
+.serviceFields{
+    width:50%;
+}
+.sinput {
+    width: 90%;
+    padding:10px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin: 5px 0px 10px 0;
+}
+.selectcategory2{
+    width:90%;
+    height:50px;
+    border-radius:5px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+.SUpdateBtns{
+    display: flex;
+    position: relative;
+    top:-100px;
+}
+.SUpdateBtns button{
+margin-right:130px;
+}
+
+.cancel{
+    background-color: red !important;
+}

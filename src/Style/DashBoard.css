@@ -4,3 +4,196 @@
 .rightobject{
     width: 100%;
 }
+.chart-design{
+    background-color: #ffffff;
+    width:97%;
+    margin-top:50px;
+    padding-top:50px;
+}
+.piesize{
+    width: 400px;
+    height: auto;
+    padding:10px 50px 5px 50px;
+    margin:20px 0;
+}
+.piebg{
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    margin-top:20px;
+    height:450px;
+    margin-bottom:20px;
+}
+.piehead{
+    font-weight: 600;
+    padding-left:130px;
+    padding-top:20px;
+    font-size:25px;
+}
+.box1, .box2, .box3, .box4, .box5, .box6 {
+    width:40px;
+    height:40px;
+    display:block;
+    margin:5px;
+}
+.box1{
+    background: #52d726;
+}
+.box2{
+    background: #ffec00;
+}
+.box3{
+    background: #ff7300;
+}
+.box4{
+    background: #007ed6;
+}
+.box5{
+    background: #ff0000;
+}
+.categoryhead{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+.piecontent{
+    margin-left:12%;
+}
+.tbox{
+    font-weight: 600;
+    font-size:20px;
+    margin-top:20px;
+    height:168px;
+    margin-right:40px;
+    padding:0 20px;
+    position: relative;
+}
+.piewidth{
+    width:60%;
+}
+.totalwidth{
+    width:38%;
+}
+
+.user{
+    background-image:linear-gradient(to right, #52d7265b 80% , #52d726 80%);
+    background-repeat: no-repeat;
+}
+.user div{
+    padding-top:40px;
+}
+.icon{
+    background-color: #ffffff;
+    width:100px;
+    height: 100px;
+    color: #52d726;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   font-size:40px;
+   border-radius:50px;
+   position: absolute;
+   top:20%;
+   left:70%;
+}
+.icon2{
+    /* background-color: #52d726; */
+    width:100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   font-size:40px;
+   border-radius:50px;
+   position: absolute;
+   top:20%;
+   left:70%;
+}
+.icon3{
+    background-color: #ffffff;
+    width:100px;
+    height: 100px;
+    color: #ff7300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   font-size:40px;
+   border-radius:50px;
+   position: absolute;
+   top:20%;
+   left:70%;
+}
+.icon4{
+    background-color: #ffffff;
+    width:100px;
+    height: 100px;
+    color: #007ed6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   font-size:40px;
+   border-radius:50px;
+   position: absolute;
+   top:20%;
+   left:70%;
+}
+.icon5{
+    background-color: #ffffff;
+    width:100px;
+    height: 100px;
+    color: #ff0000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   font-size:40px;
+   border-radius:50px;
+   position: absolute;
+   top:20%;
+   left:70%;
+}
+.vendor{
+    background-image:linear-gradient(to right, #fff9a2 80% , #ffea00 80%);
+    background-repeat: no-repeat;
+}
+.vendor div{
+    padding-top:40px;
+}
+.Booking{
+    background-image:linear-gradient(to right, #ffc494 80% , #ff7300 80%);
+    background-repeat: no-repeat;
+}
+.Booking div{
+    padding-top:40px;
+}
+.services{
+    background-image:linear-gradient(to right, #aeddff 80% , #007ed6 80%);
+    background-repeat: no-repeat;
+}
+.services div{
+    padding-top:40px;
+}
+.earning{
+    background-image:linear-gradient(to right, #ffbcbc 80% , #ff0000 80%);
+    background-repeat: no-repeat;
+}
+.earning div{
+    padding-top:40px;
+}
+.iconbg{
+    background-color: #ffffff;
+    width:100px;
+    height: 100px;
+    border-radius:50px;
+   position: absolute;
+   top:20%;
+   left:70%;
+   display: flex;
+   justify-content: center;
+  align-items: center;
+}
+.iconbg img{
+    width:50px;
+    height:auto;
+    padding-bottom: 30px;
+}

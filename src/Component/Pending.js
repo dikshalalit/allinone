@@ -1,68 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Style/Category.css";
 import Navbar from "./Navbar";
 import SideBar from "./Sidebar";
+import axios from "axios";
+import { api } from "./config";
 
 export default function PendingBooking() {
-  const Pending = [
-    {
-      Sno: 1,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "waiting to be accepted",
-    },
-    {
-      Sno: 2,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "waiting to be accepted",
-    },
-    {
-      Sno: 3,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "waiting to be accepted",
-    },
-    {
-      Sno: 4,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "waiting to be accepted",
-    },
-    {
-      Sno: 5,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "waiting to be accepted",
-    },
-    {
-      Sno: 6,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "waiting to be accepted",
-    },
-  ];
+  const [pendingData, setPendingData] = useState([]);
+
+  const handlePending = () => {
+    axios
+      .get(api + "admin/bookingPending", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+        setPendingData(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    handlePending();
+  }, []);
   return (
     <div className="categoryalign">
-      <SideBar />
+      <div className="sidefix">
+        <SideBar />
+      </div>
       <div className="rightobject">
         <Navbar />
 
@@ -73,7 +40,7 @@ export default function PendingBooking() {
             Dashboard/Booking/<span>Pending Booking</span>
           </div>
           <div className="inputbox2">
-            <table className="listtable">
+            <table className="servicelisttable">
               <tr className="rowone">
                 <td className="b1">S.no.</td>
                 <td>Booking Id</td>
@@ -83,24 +50,23 @@ export default function PendingBooking() {
                 <td>Price</td>
                 <td className="b2">Status</td>
               </tr>
-              {Pending.map((item) => {
+              {pendingData.map((item, index) => {
                 return (
                   <tr>
-                    <td>{item.Sno}</td>
-                    <td>{item.Bookingid}</td>
-                    <td>{item.Date}</td>
-                    <td>{item.Servicename}</td>
-                    <td>{item.Timeslot}</td>
-                    <td>{item.Price}</td>
-                    <td className="pending">{item.status}</td>
+                    <td>{index + 1}</td>
+                    <td>{item._id}</td>
+                    <td>{item.date}</td>
+                    <td>{item.servicePrice.service.name}</td>
+                    <td>{item.timeSlot.start + " - " + item.timeSlot.end}</td>
+                    <td>{item.servicePrice.price}</td>
+                    <td>{item.status}</td>
                   </tr>
                 );
               })}
             </table>
 
             <div className="pagination">
-              <div className="showing">Showing 1 to 8 of 8 entries</div>
-              <div>
+              <div className="d-flex align-items-center">
                 <button className="prevbtn">Previous</button>
                 <button className="pageno">1</button>
                 <button className="nxtbtn">Next</button>

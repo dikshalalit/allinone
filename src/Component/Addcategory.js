@@ -1,12 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Style/Category.css";
 import Navbar from "./Navbar";
 import SideBar from "./Sidebar";
+import axios from "axios";
+import { api } from "./config";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AddCategory() {
+  const [name, setname] = useState("");
+  // const [categoryimage, setCategoryimage] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
+  const handlecategory = (e) => {
+    if (e.target.value === "") {
+      setIsDisabled(true);
+    }
+    setIsDisabled(false);
+    setname(e.target.value);
+  };
+
+  // const handlecategoryimage = (e) => {
+  //   setCategoryimage(e.target.value);
+  // };
+
+  const notify = (catName, catMessage) => toast(catName + " " + catMessage);
+  const handleAddcategory = async (e) => {
+    const inputs = document.querySelectorAll("#Cname, #Cimage");
+
+    inputs.forEach((input) => {
+      input.value = "";
+    });
+
+    axios
+      .post(
+        api + "admin/addCategory",
+        { name },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then((value) => {
+        console.log(value.data);
+        notify(value.data.category.name, value.data.message);
+      })
+      .catch((e) => {
+        console.log("error", e.response.data);
+        alert(e.response.data.message);
+      });
+  };
+
+  const handleboth = () => {
+    handleAddcategory();
+  };
+
   return (
     <div className="categoryalign">
-      <SideBar />
+      <div className="sidefix">
+        <SideBar />
+      </div>
       <div className="rightobject">
         <Navbar />
         <div className="addpage">
@@ -24,6 +75,7 @@ export default function AddCategory() {
               id="Cname"
               name="fav_language"
               className="Cinput"
+              onChange={handlecategory}
             />
             <label for="Cimage" className="Cimage">
               Category Image
@@ -35,7 +87,15 @@ export default function AddCategory() {
               className="Cinput"
             />
 
-            <button className="savebtn">Save</button>
+            <button
+              className="savebtn"
+              onClick={handleboth}
+              disabled={isDisabled}
+            >
+              Save
+            </button>
+
+            <ToastContainer />
           </div>
         </div>
       </div>

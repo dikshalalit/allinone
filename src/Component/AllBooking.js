@@ -1,68 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Style/Category.css";
 import Navbar from "./Navbar";
 import SideBar from "./Sidebar";
+import axios from "axios";
+import { api } from "./config";
 
 export default function AllBooking() {
-  const allbooking = [
-    {
-      Sno: 1,
-      Bookingid: "1234567890123456789012345",
-      Date: "09/27/2022",
-      ServiceName: "Hair Color",
-      TimeSlot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      Status: "Completed",
-    },
-    {
-      Sno: 2,
-      Bookingid: "1234567890123456789012345",
-      Date: "09/27/2022",
-      ServiceName: "Hair Color",
-      TimeSlot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      Status: "Pending",
-    },
-    {
-      Sno: 3,
-      Bookingid: "1234567890123456789012345",
-      Date: "09/27/2022",
-      ServiceName: "Hair Color",
-      TimeSlot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      Status: "Cancelled",
-    },
-    {
-      Sno: 4,
-      Bookingid: "1234567890123456789012345",
-      Date: "09/27/2022",
-      ServiceName: "Hair Color",
-      TimeSlot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      Status: "Pending",
-    },
-    {
-      Sno: 5,
-      Bookingid: "1234567890123456789012345",
-      Date: "09/27/2022",
-      ServiceName: "Hair Color",
-      TimeSlot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      Status: "Cancelled",
-    },
-    {
-      Sno: 6,
-      Bookingid: "1234567890123456789012345",
-      Date: "09/27/2022",
-      ServiceName: "Hair Color",
-      TimeSlot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      Status: "Completed",
-    },
-  ];
+  const [allBookingData, setAllBookingData] = useState([]);
+
+  const handleAllBooking = () => {
+    axios
+      .get(api + "admin/booking", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+        setAllBookingData(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    handleAllBooking();
+  }, []);
+
   return (
     <div className="categoryalign">
-      <SideBar />
+      <div className="sidefix">
+        <SideBar />
+      </div>
       <div className="rightobject">
         <Navbar />
 
@@ -83,21 +51,22 @@ export default function AllBooking() {
                 <td>Price</td>
                 <td className="b2">Status</td>
               </tr>
-              {allbooking.map((item) => {
+              {allBookingData.map((item, index) => {
                 return (
                   <tr>
-                    <td>{item.Sno}</td>
-                    <td>{item.Bookingid}</td>
-                    <td>{item.Date}</td>
-                    <td>{item.ServiceName}</td>
-                    <td>{item.TimeSlot}</td>
-                    <td>{item.Price}</td>
-                    {item.Status === "Completed" ? (
-                      <td className="complete">{item.Status}</td>
-                    ) : item.Status === "Pending" ? (
-                      <td className="pending">{item.Status}</td>
+                    <td>{index + 1}</td>
+                    <td>{item._id}</td>
+                    <td>{item.date}</td>
+                    <td>{item.servicePrice.service.name}</td>
+                    <td>{item.timeSlot.start + " - " + item.timeSlot.end}</td>
+                    <td>{item.servicePrice.price}</td>
+
+                    {item.status === "Completed" ? (
+                      <td className="complete">{item.status}</td>
+                    ) : item.status === "Pending" ? (
+                      <td className="pending">{item.status}</td>
                     ) : (
-                      <td className="cancelled">{item.Status}</td>
+                      <td className="cancelled">{item.status}</td>
                     )}
                   </tr>
                 );
@@ -105,8 +74,7 @@ export default function AllBooking() {
             </table>
 
             <div className="pagination">
-              <div className="showing">Showing 1 to 8 of 8 entries</div>
-              <div>
+              <div className="d-flex align-items-center">
                 <button className="prevbtn">Previous</button>
                 <button className="pageno">1</button>
                 <button className="nxtbtn">Next</button>

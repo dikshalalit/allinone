@@ -1,209 +1,131 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import Modal from "react-modal";
+import React, { useState, useEffect } from "react";
 import "../Style/Category.css";
 import Navbar from "./Navbar";
 import SideBar from "./Sidebar";
-import "../Style/Subcategory.css";
-import Selector from "./compo/Selector";
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    width: "800px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-};
-
-Modal.setAppElement("#root");
+import axios from "axios";
+import { api } from "./config";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SubAddCategory() {
-  const [submodel, setsubmodel] = useState(false);
-  const [id, setId] = useState(0);
-  const increase = (id) => {
-    console.log("selected", id);
-    if (sub[id - 1].subcategory.length !== 0)
-      return <Selector sub={sub[id - 1].subcategory} setId={setId} />;
-    if (sub[id - 1].subcategory.subcategory.length !== 0)
-      return (
-        <Selector sub={sub[id - 1].subcategory.subcategory} setId={setId} />
-      );
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const [catforsub1, setCatforsub1] = useState([]);
+  const [name, setname] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(api + "admin/getCategoryForSubCategory", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((res) => {
+        setCatforsub1(res.data.category);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const [categoryId, setcategoryId] = useState([]);
+
+  const handleAddSubCatname = (e) => {
+    if (e.target.value === "") {
+      setIsDisabled(true);
+    }
+    setIsDisabled(false);
+    setname(e.target.value);
   };
 
-  const sub = [
-    {
-      _id: 1,
-      categoryName: "Spa/Salon for Women",
-      subcategory: [
+  const handlecategoryid = (e) => {
+    if (e.target.value === "") {
+      setIsDisabled(true);
+    }
+    setIsDisabled(false);
+    setcategoryId(e.target.value);
+  };
+
+  const notify = (subcatename, categoryname) =>
+    toast(subcatename + " Sub-Sategory added to " + categoryname);
+
+  const handleAddSubCat = async (e) => {
+    axios
+      .post(
+        api + "admin/addSubCategory",
+        { name, categoryId },
         {
-          _id: 1,
-          categoryName: "Spa",
-          subcategory: [
-            {
-              _id: 1,
-              categoryName: "Stress Relief Therapies",
-              subcategory: [{}],
-              services: [],
-            },
-            {
-              _id: 2,
-              categoryName: "Pain Relief Therapies",
-              subcategory: [{}],
-              services: [],
-            },
-            {
-              _id: 2,
-              categoryName: "Anti Aging Body Scrub",
-              subcategory: [{}],
-              services: [],
-            },
-          ],
-          services: [],
-        },
-        {
-          _id: 2,
-          categoryName: "Saloon",
-          subcategory: [],
-          services: [],
-        },
-      ],
-      services: [],
-    },
-    {
-      _id: 2,
-      categoryName: "Massage/Salon for men",
-      subcategory: [
-        {
-          _id: 1,
-          categoryName: "SPA",
-          subcategory: [],
-          services: [],
-        },
-        {
-          _id: 2,
-          categoryName: "Salon",
-          subcategory: [],
-          services: [],
-        },
-      ],
-      services: [],
-    },
-    {
-      _id: 3,
-      categoryName: "Home Applicances",
-      subcategory: [
-        {
-          _id: 1,
-          categoryName: "Refrigerator",
-          subcategory: [],
-          services: [],
-        },
-        {
-          _id: 2,
-          categoryName: "Television",
-          subcategory: [],
-          services: [],
-        },
-        {
-          _id: 3,
-          categoryName: "Washing Machine",
-          subcategory: [],
-          services: [],
-        },
-        {
-          _id: 4,
-          categoryName: "Water Purifier",
-          subcategory: [],
-          services: [],
-        },
-      ],
-      services: [],
-    },
-    {
-      _id: 4,
-      categoryName: "AC Service",
-      subcategory: [],
-      services: ["Services"],
-    },
-    {
-      _id: 5,
-      categoryName: "Cleaning",
-      subcategory: [],
-      services: [],
-    },
-    {
-      _id: 6,
-      categoryName: "Electricians",
-      subcategory: [],
-      services: [],
-    },
-  ];
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then((value) => {
+        console.log(value.data);
+        console.log("SJAIDJAISDJASIDJASIDJSAIDJAIDJ");
+        setname("");
+        notify(value.data.subCategory.name, value.data.category.name);
+      })
+      .catch((e) => {
+        console.log("error", e.response.data);
+        alert(e.response.data.message);
+      });
+  };
   return (
     <div className="categoryalign">
-      <SideBar />
+      <div className="sidefix">
+        <SideBar />
+      </div>
       <div className="rightobject">
         <Navbar />
         <div className="addpage">
           <i className="fa-solid fa-arrow-left addcathead"></i>
           <span className="addcathead2">Sub-Categories</span>
           <div className="path">
-            Dashboard/Sub-Categories/<span>Sub-Add Category</span>
+            Dashboard/Sub-Categories/Sub-Category 1/
+            <span>Add Sub-Category</span>
           </div>
           <div className="inputbox">
-            <Selector sub={sub} setId={setId} />
-            {id && increase(id)}
-            {id && increase(id)}
+            <label for="Cname" className="Cname">
+              Category
+            </label>
+            <select
+              className="selectcategory"
+              onChange={handlecategoryid}
+              id="selectitem"
+            >
+              <option disabled selected>
+                Select Category
+              </option>
+              {catforsub1.map((item) => {
+                return <option value={item._id}>{item.name}</option>;
+              })}
+            </select>
 
-            <div className="d-flex">
-              <button
-                className="subbtn"
-                id="subbtn"
-                onClick={() => setsubmodel(true)}
-              >
-                Add Sub-Category
-              </button>
-              <button className="subbtn" id="catbn">
-                Add Service
-              </button>
-            </div>
-            <Modal isOpen={submodel} style={customStyles}>
-              <h4>Add Sub-Category</h4>
+            <label for="Cname" className="Cname">
+              Add Sub-Category
+            </label>
+            <input
+              type="text"
+              id="Cname"
+              name="fav_language"
+              className="Cinput"
+              onChange={handleAddSubCatname}
+            />
+            <label for="Cimage" className="Cimage">
+              Sub-Category Image
+            </label>
+            <input
+              type="file"
+              id="Cimage"
+              name="fav_language"
+              className="Cinput"
+            />
 
-              <label for="Cname" className="Cname">
-                Sub-Category Name
-              </label>
-              <input
-                type="text"
-                id="Cname"
-                name="fav_language"
-                className="Cinput"
-              />
-              <label for="Cimage" className="Cimage">
-                Upload Sub-Category Image
-              </label>
-              <input
-                type="file"
-                id="Cimage"
-                name="fav_language"
-                className="Cinput"
-              />
-              <button
-                className="addbtn"
-                onClick={() => {
-                  setsubmodel(false);
-                  document.getElementById("subbtn").style.display = "none";
-                }}
-              >
-                ADD
-              </button>
-            </Modal>
+            <button
+              className="savebtn"
+              onClick={handleAddSubCat}
+              disabled={isDisabled}
+            >
+              Save
+            </button>
+            <ToastContainer />
           </div>
         </div>
       </div>

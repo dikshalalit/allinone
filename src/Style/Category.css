@@ -24,7 +24,12 @@
 .path span {
     color: rgb(0, 149, 255);
 }
-
+input{
+    border-color: #a4a1a1 !important;
+}
+select{
+    border-color: #a4a1a1 !important;
+}
 .inputbox {
     background-color: #fff;
     width: 100%;
@@ -32,15 +37,9 @@
     margin-top: 15px;
     border-radius: 20px;
     padding: 20px 30px;
+    overflow-y: scroll;
 }
 .inputbox2{
-    background-color: #fff;
-    width:100%;
-    height: 550px;
-    margin-top:15px;
-    border-radius: 20px;
-}
-.serviceinputbox{
     position: relative;
     background-color: #fff;
     width:100%;
@@ -50,11 +49,59 @@
     overflow-x: scroll;
 }
 
+
+.serviceinputbox{
+    position: relative;
+    background-color: #fff;
+    width:100%;
+    height: 550px;
+    margin-top:15px;
+
+    overflow-x: scroll;
+}
+
 .Cname,
 .Cimage {
     display: block;
     font-weight: 500;
     font-size: 17px;
+}
+.SGPbox{
+    width: 100%;
+    border: 1px solid #a4a1a1;
+   height: 100px;
+   margin-bottom:20px;
+}
+.headbox{
+    width:100%;
+    height:50px;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+}
+.silver{
+    background-color: #989DA0;
+}
+.gold{
+    background-color: #AC9B4B;
+}
+.platinum{
+    background-color: #4E637B;
+}
+.SGPbox table tr td{
+    width:100%;
+}
+.SGPbox table tr th{
+    font-weight: 500;
+    padding:0 20px;
+}
+
+.desptype{
+    width:90%;
 }
 
 .Cinput {
@@ -62,7 +109,7 @@
     padding:10px 10px;
     border-radius: 5px;
     border: 1px solid black;
-    margin: 10px 0px 30px 0;
+    margin: 5px 0px 10px 0;
 }
 
 .savebtn {
@@ -73,6 +120,7 @@
     padding: 10px 70px;
     font-size: 20px;
     border-radius: 5px;
+    cursor: pointer;
 }
 .savebtn2 {
     display: block;
@@ -82,15 +130,25 @@
     padding: 10px 120px;
     font-size: 20px;
     border-radius: 5px;
+    cursor: pointer;
 
 }
+tr{
+    height:50px !important;
+    white-space: nowrap;
+}
 .listtable {
-    width: 100%;    
+    width:120%; 
 }
 .servicelisttable{
     width:150%;
-    table-layout:fixed;
+}
 
+.listtable2 {
+    width:100%; 
+}
+.listtable2 tr:nth-child(odd) {
+    background-color: rgb(228, 228, 228); 
 }
 
 .listtable tr:nth-child(odd) {
@@ -102,18 +160,32 @@
 .rowone{
     font-weight: 500;
 }
-.b1{
-    border-radius:20px 0px 0 0;
-    width:70px;
+.subselect{
+    margin:20px !important;
+    background-color: #e4e4e4;
+    border-radius: 0px !important;
+    font-weight: 600;
 }
-.b2{
-    border-radius:0px 20px 0 0;
-    width:170px;
+
+.subselect2{
+    margin:0px 20px 20px 20px !important;
+    background-color: #e4e4e4;
+    border-radius: 0px !important;
+    font-weight: 600;
 }
-/* .servicepagination{
-    position:fixed;
-} */
+
+.subselect option{
+    background-color: #fff;
+}
+.subselect2 option{
+    background-color: #fff;
+}
 .listtable tr td{
+    padding:10px 15px;
+    font-size:17px;
+    text-align: center;
+}
+.listtable2 tr td{
     padding:10px 15px;
     font-size:17px;
     text-align: center;
@@ -127,17 +199,19 @@
     color: blue;
     padding-right:15px;
     font-size:20px;
+    cursor: pointer;
 }
 .delete{
     color: red;
     font-size:20px;
+    cursor: pointer;
 }
 .eye{
     font-size:20px;
+    cursor: pointer;
 }
 .categoryalign{
     display: flex;
-    background-color: #f7f5f5;
     height:auto;
 }
 .rightobject{
@@ -149,7 +223,7 @@
     font-weight: 500;
 }
 .pending{
-    color:#FFA500;
+    color:#eb7906;
     font-weight: 500;
 }
 .cancelled, .Rejected{
@@ -158,12 +232,12 @@
 }
 .pagination{
     display: flex;
-    justify-content: space-between;
-    background-color:#f7f5f5;
-    margin-top:30px;
-    font-size:15px;
-    height:40px;
-    width:100%;
+    justify-content:flex-end;
+}
+.pagination div{
+    position: fixed;
+    margin-top:50px;
+    margin-right:20px ;
 }
 .showing{
     margin-left:20px;
@@ -177,7 +251,6 @@
     border: 1px solid #e4e4e4;
     color:#666565;
     height:40px;
-
    
 }
 .nxtbtn{
@@ -190,7 +263,7 @@
     height:40px;
 }
 .pageno{
-    background-color: #FFA500;
+    background-color: #fdcd3b;
     padding:0px 20px;
     border: none;
     color:#ffffff;
@@ -226,6 +299,7 @@
     font-size:25px;
     border-radius:5px;
     margin:30px 0 50px 10px;
+    cursor: pointer;
 }
 .Nobtn{
     background-color: #ffffff;
@@ -236,6 +310,7 @@
     font-size:25px;
     border-radius:5px;
     margin:30px 0px 50px 100px;
+    cursor: pointer;
 }
 .rejectyes{
     background-color: red;
@@ -282,8 +357,11 @@
     margin-right:10px;
     margin-top:10px;
 }
+.checkalign{
+    margin-left:50px !important;
+}
 .subadminhead{
-    color: #FFA500;
+    color: #fdcd3b;
     margin-bottom:20px;
 }
 .adminbtn{
@@ -291,4 +369,160 @@
     justify-content: center;
     margin-top:40px;
 }
+.closeimagemodal{
+    position: fixed;  
+    border:none;
+    color: #000000;
+    font-weight: bold;
+}
+.subcat{
+    font-size:18px;
+    background-color: 100%;
+}
+.selectcategory{
+    width:50%;
+    height:50px;
+    border-radius:5px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+.selectcategorytable{
+    width:90%;
+    height:50px;
+    border-radius:5px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+.inputTable tr th{
+    font-size: 20px;
+    font-weight: 500;
+}
+.servicetable{
+     width:100%;
+}
+.servicetable td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+.serialservice{
+    width: 10%;
+}
+.servicelisticon{
+    font-size: 25px !important;
+    cursor: pointer;
+}
+.fa-square-check{
+    color: #0EC01B;
+    padding-right:15px;
+    font-size:22px;
+    cursor: pointer;
+}
+.fa-rectangle-xmark{
+    color:red;
+    font-size:22px;  
+    cursor: pointer; 
+}
+.card_bg{
+    background-color:#ffffff;
+    margin:10px;
+    box-shadow: 0px 0px 2px #cbcbcb;
+    width:100%;
+    padding-bottom:20px;
+    margin-top:40px;
+}
+.card_color{
+    background-color: #fdcd3b;
+    height:100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+.card_color p{
+    margin-top:-10px;
+}
 
+.vendorImage{
+    height:120px;
+    width:120px;
+    border-radius:50%;
+    margin-top:30px;
+}
+
+.vendorbox{
+    overflow-y: scroll;
+}
+.lowerText{
+    margin-top: 120px;
+    padding-left:20px;
+    width: 100%;
+   
+}
+.lowerText div{
+    font-weight: 500;
+}
+.lowerText div span{
+    font-weight: 400;
+    padding-left:20px;
+    overflow-wrap: break-word;
+    width: 100px !important;
+}
+
+.cardBtn{
+    display: flex;
+    margin-top:20px;
+}
+.Acceptbtn{
+    background-color: #0EC01B;
+    color: #ffffff;
+    border: none;
+    padding:5px 10px;
+    border-radius:5px;
+    margin-left:20px;
+}
+.Rejectbtn{
+    background-color: red;
+    color: #ffffff;
+    border: none;
+    padding:5px 10px;
+    border-radius:5px; 
+    margin-left:20px;
+}
+.inputTable{
+    width: 100%;
+}
+.selectLine{
+    border-bottom: 1px solid black;
+    width:115px;
+    margin-bottom:20px;
+    margin-left:5px;
+    margin-right:5px;
+}
+.servicebox{
+    padding:20px;
+}
+.serviceTypeWidth{
+    width:50%;
+}
+.imageModal{
+    width:auto;
+    height:400px;
+    margin:10px;
+    
+}
+.imageModalClose{
+    position: absolute;
+    top:0px;
+    right:0px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    cursor: pointer;
+    width:30px;
+    height: 30px;
+    color: #fff;
+    font-size:20px;
+    font-weight: 600;
+}

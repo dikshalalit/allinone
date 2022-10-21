@@ -92,7 +92,9 @@ export default function Serviceman() {
   };
   return (
     <div className="categoryalign">
-      <SideBar />
+      <div className="sidefix">
+        <SideBar />
+      </div>
       <div className="rightobject">
         <Navbar />
 
@@ -100,7 +102,7 @@ export default function Serviceman() {
           <i className="fa-solid fa-arrow-left addcathead"></i>
           <span className="addcathead">Servicemen</span>
           <div className="path">
-            Dashboard/Booking/<span>Servicemen Request</span>
+            Dashboard/Servicemen/<span>Servicemen Request</span>
           </div>
           <div className="serviceinputbox">
             <table className="servicelisttable">
@@ -140,16 +142,15 @@ export default function Serviceman() {
                           ></i>
                         </td>
                       ) : (
-                        val.requestStatus
+                        <td>{val.requestStatus}</td>
                       )}
                     </tr>
                   );
                 })}
             </table>
 
-            <div className="pagination servicepagination">
-              <div className="showing">Showing 1 to 8 of 8 entries</div>
-              <div>
+            <div className="pagination">
+              <div className="d-flex align-items-center">
                 <button className="prevbtn">Previous</button>
                 <button className="pageno">1</button>
                 <button className="nxtbtn">Next</button>

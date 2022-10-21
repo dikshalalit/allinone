@@ -17,7 +17,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     console.log({ userId, password });
     axios
-      .post(api + "/admin/loginAdmin", {
+      .post(api + "admin/loginAdmin", {
         userId,
         password,
       })

@@ -2,22 +2,80 @@ import React, { useState } from "react";
 import "../Style/Category.css";
 import Navbar from "./Navbar";
 import SideBar from "./Sidebar";
-import Modal from "react-modal";
+import axios from "axios";
+import { api } from "./config";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AddSubAdmin() {
   const responsible = [
-    "Finance",
-    "Top Host",
-    "Top Users",
-    "Host Requests",
-    "Gifts",
-    "Banners",
-    "Emojis",
-    "All Users",
+    "Categories",
+    "Sub-Categories",
+    "Booking",
+    "Banner",
+    "Servicemen",
+    "Vendor",
   ];
+
+  const [responsibility, setResponsibility] = useState([]);
+  const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const notify = (Message) => toast(Message);
+
+  const handleResponsible = (item) => {
+    var responsibility_array = [...responsibility];
+    if (item.target.checked) {
+      responsibility_array = [...responsibility, item.target.value];
+    } else {
+      responsibility_array.splice(responsibility.indexOf(item.target.value), 1);
+    }
+    setResponsibility(responsibility_array);
+  };
+
+  const handleUserName = (item) => {
+    setUserName(item.target.value);
+  };
+
+  const handlePassword = (item) => {
+    setUserPassword(item.target.value);
+  };
+
+  const handleAddSubAdmin = async (e) => {
+    const inputs = document.querySelectorAll("#username, #userpass, #Cbox");
+
+    inputs.forEach((input) => {
+      input.value = "";
+      input.checked = "";
+    });
+
+    axios
+      .post(
+        api + "admin/subAdmin",
+        {
+          userId: userName,
+          password: userPassword,
+          responsibilities: responsibility,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then((value) => {
+        console.log(value.data);
+        notify("Sub-admin Added Succesfully");
+      })
+      .catch((e) => {
+        console.log("error", e.response.data);
+        alert(e.response.data.message);
+      });
+  };
+
   return (
     <div className="categoryalign">
-      <SideBar />
+      <div className="sidefix">
+        <SideBar />
+      </div>
       <div className="rightobject">
         <Navbar />
         <div className="addpage">
@@ -38,6 +96,7 @@ export default function AddSubAdmin() {
                   id="username"
                   name="fav_language"
                   className="userinput"
+                  onChange={handleUserName}
                 />
               </div>
               <div>
@@ -49,6 +108,7 @@ export default function AddSubAdmin() {
                   id="userpass"
                   name="fav_language"
                   className="userinput"
+                  onChange={handlePassword}
                 />
               </div>
             </div>
@@ -57,7 +117,13 @@ export default function AddSubAdmin() {
               {responsible.map((item) => {
                 return (
                   <div className="col-3">
-                    <input type="checkbox" className="incheck" />
+                    <input
+                      id="Cbox"
+                      type="checkbox"
+                      className="incheck"
+                      onClick={(item) => handleResponsible(item)}
+                      value={item}
+                    />
                     {item}
                   </div>
                 );
@@ -65,7 +131,10 @@ export default function AddSubAdmin() {
             </div>
 
             <div className="adminbtn">
-              <button className="savebtn2">Save</button>
+              <button className="savebtn2" onClick={handleAddSubAdmin}>
+                Save
+              </button>
+              <ToastContainer />
             </div>
           </div>
         </div>

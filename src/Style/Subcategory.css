@@ -4,7 +4,7 @@
     border-radius:5px;
 }
 .Cselect option{
-    background-color:#FFA500;
+    background-color:#fdcd3b;
     outline: red;
     color: #ffffff;
     padding:50px;
@@ -27,7 +27,6 @@ option:hover{
 .categorylist{
      border:1px solid #ccc;
      width:50%;
-     background-color: #f7f5f5;
 }
 .categorybtn{
     display: block;

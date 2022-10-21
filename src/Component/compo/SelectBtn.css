@@ -1,0 +1,21 @@
+.selectbtn{
+    background-color: #0EC01B;
+    color:#ffffff;
+    border: none !important;
+    padding:10px 5px;
+    width:200px;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius:10px;
+    border-color: #ffffff !important;
+    
+}
+.selectbtn option{
+    background-color: #ffffff;
+    color: black;
+    margin-top:5px;
+    font-size:15px;
+}
+.btnalign{
+    display: flex !important;
+}

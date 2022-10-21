@@ -1,68 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Style/Category.css";
 import Navbar from "./Navbar";
 import SideBar from "./Sidebar";
+import { api } from "./config";
+import axios from "axios";
 
 export default function RejectedBooking() {
-  const Pending = [
-    {
-      Sno: 1,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "Cancelled",
-    },
-    {
-      Sno: 2,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "Cancelled",
-    },
-    {
-      Sno: 3,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "Cancelled",
-    },
-    {
-      Sno: 4,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "Cancelled",
-    },
-    {
-      Sno: 5,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "Cancelled",
-    },
-    {
-      Sno: 6,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "Cancelled",
-    },
-  ];
+  const [rejectedData, setRejectedData] = useState([]);
+
+  const handleReject = () => {
+    axios
+      .get(api + "admin/bookingRejected", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((res) => {
+        console.log(res);
+        setRejectedData(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    handleReject();
+  }, []);
   return (
     <div className="categoryalign">
-      <SideBar />
+      <div className="sidefix">
+        <SideBar />
+      </div>
       <div className="rightobject">
         <Navbar />
 
@@ -83,24 +50,23 @@ export default function RejectedBooking() {
                 <td>Price</td>
                 <td className="b2">Status</td>
               </tr>
-              {Pending.map((item) => {
+              {rejectedData.map((item, index) => {
                 return (
                   <tr>
-                    <td>{item.Sno}</td>
-                    <td>{item.Bookingid}</td>
-                    <td>{item.Date}</td>
-                    <td>{item.Servicename}</td>
-                    <td>{item.Timeslot}</td>
-                    <td>{item.Price}</td>
-                    <td className="cancelled">{item.status}</td>
+                    <td>{index + 1}</td>
+                    <td>{item._id}</td>
+                    <td>{item.date}</td>
+                    <td>{item.servicePrice.service.name}</td>
+                    <td>{item.timeSlot.start + " - " + item.timeSlot.end}</td>
+                    <td>{item.servicePrice.price}</td>
+                    <td>{item.status}</td>
                   </tr>
                 );
               })}
             </table>
 
             <div className="pagination">
-              <div className="showing">Showing 1 to 8 of 8 entries</div>
-              <div>
+              <div className="d-flex align-items-center">
                 <button className="prevbtn">Previous</button>
                 <button className="pageno">1</button>
                 <button className="nxtbtn">Next</button>

@@ -1,68 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Style/Category.css";
 import Navbar from "./Navbar";
 import SideBar from "./Sidebar";
+import axios from "axios";
+import { api } from "./config";
 
 export default function UpcomingBooking() {
-  const Upcoming = [
-    {
-      Sno: 1,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "1 day to go",
-    },
-    {
-      Sno: 2,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "10 hours to go",
-    },
-    {
-      Sno: 3,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "2 day to go",
-    },
-    {
-      Sno: 4,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "10 hours to go",
-    },
-    {
-      Sno: 5,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "7 hours to go",
-    },
-    {
-      Sno: 6,
-      Bookingid: "123456789012345678901234",
-      Date: "22/09/22",
-      Servicename: "Hair Color",
-      Timeslot: "10:00 AM to 11:00 AM",
-      Price: "8,000",
-      status: "6 hours to go",
-    },
-  ];
+  const [upcomingData, setUpcomingData] = useState([]);
+
+  const handleUpcoming = () => {
+    axios
+      .get(api + "admin/bookingAccepted", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((res) => {
+        console.log(res);
+        setUpcomingData(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    handleUpcoming();
+  }, []);
+
   return (
     <div className="categoryalign">
-      <SideBar />
+      <div className="sidefix">
+        <SideBar />
+      </div>
       <div className="rightobject">
         <Navbar />
 
@@ -83,24 +51,23 @@ export default function UpcomingBooking() {
                 <td>Price</td>
                 <td className="b2">Status</td>
               </tr>
-              {Upcoming.map((item) => {
+              {upcomingData.map((item, index) => {
                 return (
                   <tr>
-                    <td>{item.Sno}</td>
-                    <td>{item.Bookingid}</td>
-                    <td>{item.Date}</td>
-                    <td>{item.Servicename}</td>
-                    <td>{item.Timeslot}</td>
-                    <td>{item.Price}</td>
-                    <td className="complete">{item.status}</td>
+                    <td>{index + 1}</td>
+                    <td>{item._id}</td>
+                    <td>{item.date}</td>
+                    <td>{item.servicePrice.service.name}</td>
+                    <td>{item.timeSlot.start + " - " + item.timeSlot.end}</td>
+                    <td>{item.servicePrice.price}</td>
+                    <td>{item.status}</td>
                   </tr>
                 );
               })}
             </table>
 
             <div className="pagination">
-              <div className="showing">Showing 1 to 8 of 8 entries</div>
-              <div>
+              <div className="d-flex align-items-center">
                 <button className="prevbtn">Previous</button>
                 <button className="pageno">1</button>
                 <button className="nxtbtn">Next</button>

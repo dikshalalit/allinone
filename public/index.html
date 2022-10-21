@@ -16,14 +16,16 @@
   <body style="background-color:#f7f5f5;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script>
-      $(document).ready(function () { 
-  $(document).click(function () {
-     // if($(".navbar-collapse").hasClass("in")){
-       $('.BookingList').collapse('hide');
-     // }
-  });
+
+
+  <script>
+$(document).click(function(e) {
+	if (!$(e.target).is('.panel-body')) {
+    	$('.subb').collapse('hide');	    
+    }
 });
-    </script>
+ </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
   </body>
 </html>

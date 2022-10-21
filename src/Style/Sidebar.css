@@ -1,6 +1,8 @@
 .screenbg {
-    height: 100vh;
+    height:100%;
     display: flex;
+    
+    
 }
 
 .dashbox {
@@ -8,14 +10,13 @@
 }
 
 .sidebar {
-    background-color: #FF8B17;
-    height: 100vh;
+    background-color: #FFB71E;
     width: auto;
 }
 
 
 .sidebox {
-    width: 250px;
+    width: 250px !important;
 }
 
 .logoimg {
@@ -25,6 +26,7 @@
 
 .logoset {
     padding: 10px 30px;
+    width:250px;
 }
 
 .logoset span {
@@ -38,8 +40,10 @@
 .dashhead {
     font-size: 22px;
     font-weight: 500;
-    padding-left: 20px;
+    padding: 5px  0 5px 20px;
     margin: 70px 0 20px 0;
+    color: black;
+
 }
 
 .subhead {
@@ -48,19 +52,20 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
+    cursor: pointer;
 }
 
 .subhead:hover {
     color: #fff;
-    background-color: #FFA500;
+    background-color: #fdcd3b;
     width: 100%;
 }
 
 .BookingList li {
     color: #fff;
-    background-color: #FFA500;
+    background-color: #fdcd3b;
     list-style-type: none;
-    margin-left: -40px;
+    margin-left: -32px;
     padding-left: 40px;
     padding-bottom: 10px;
 }
@@ -78,8 +83,17 @@
 .gripbtnside{
     width:30px;
     height:60px;
-    background-color: #FFA500;
+    background-color: #fdcd3b;
     border: none;
     font-size:25px;
 
+}
+
+.dashhead:hover{
+    background-color: #fdcd3b;
+    color: #fff;
+}
+.sidebar a{
+    text-decoration: none;
+    cursor: pointer;
 }
